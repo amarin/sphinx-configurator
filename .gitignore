@@ -11,3 +11,4 @@ easy_release.cfg
 /build/
 /.eggs/
 /src/*.egg-info/
+/src/sphinx-vcs-changelog/
