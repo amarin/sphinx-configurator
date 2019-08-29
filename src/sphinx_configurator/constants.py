@@ -1,0 +1,23 @@
+# -*- coding: utf-8 -*-
+
+CONFIGURATION_EXTENDED = 'documentation_builders'
+
+CONFIGURATION_SECTION_PREFIX = 'build'
+
+CONFIGURATION_SECTION_METADATA = 'metadata'
+
+CONFIGURATION_SECTION_MAIN = 'sphinx'
+
+NOTSET = object()
+
+DEFAULT_SECTION_PREFIX = 'build'
+DEFAULT_SECTION_SUFFIX = ''
+
+
+OPTION_BUILDER_PREFIX = 'builder_prefix'
+OPTION_BUILDER_SUFFIX = 'builder_suffix'
+
+REBUILD_ON_CHANGE = True
+IGNORE_CHANGES = False
+
+BUILDER_HTML_SECTION = 'html'

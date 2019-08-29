@@ -1,0 +1,13 @@
+*.pyc
+*.mo
+.idea/
+*.local
+/.coverage
+/old_tests/report/
+
+# исключить локальные конфигурационные файлы
+/conf/conf.d/*.conf
+easy_release.cfg
+/build/
+/.eggs/
+/src/*.egg-info/

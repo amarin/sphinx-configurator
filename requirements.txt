@@ -1,0 +1,4 @@
+six
+Sphinx
+git+git:git@gitlab.com:mediatel-documentation/sphinx-vcs-changelog.git
+
