@@ -1,16 +1,20 @@
 # -*- coding: utf-8 -*-
 import glob
 import importlib
+import sys
 import types
 from abc import abstractmethod
 from os import path
 
 from sphinx.application import Sphinx
+from sphinx.util import logging
 
 from sphinx_configurator import ConfigFile
 from sphinx_configurator.constants import OPTION_PLUGIN_DIR
 from sphinx_configurator.constants import OPTION_PLUGIN_DIR_DEFAULT
 from sphinx_configurator.constants import SECTION_PLUGINS_NAME
+
+logger = logging.getLogger(__name__)
 
 
 class Plugin(object):
@@ -21,6 +25,20 @@ class Plugin(object):
         assert isinstance(config, ConfigFile)
         self.app = app
         self.config = config
+
+        # _logger = logging.getLogger(self.__class__.__name__)
+
+        self.debug = logger.debug
+        self.info = logger.info
+        self.warning = logger.warning
+        self.error = logger.error
+        self.critical = logger.critical
+
+        self.info(f"{self.__class__.__name__} ready")
+
+    def __call__(self):
+        logger.info(f"Run {self.__class__.__name__}")
+        self.run()
 
     @abstractmethod
     def run(self):
@@ -37,16 +55,28 @@ class Plugin(object):
 
     @classmethod
     def get_plugins(cls, app, config):
-        plugins_dir = Plugin.get_plugins_dir(app, config)
+        logger.info("Loading plugins")
+        plugins_dir = path.join(app.srcdir, Plugin.get_plugins_dir(app, config))
+
+        logger.info(f"Process all plugins in {plugins_dir}")
         if not path.exists(plugins_dir):
-            return
+            logger.info(f"No plugins found")
+            return ()
         plugins_pattern = path.join(plugins_dir, '*.py')
 
         def plugin_modules():
-            """Generate plugin modules"""
+            logger.info("Loading plugin modules")
             for module_path in glob.glob(plugins_pattern):
-                m = importlib.import_module(module_path)
+
+                module_name = path.basename(module_path)[:-3]
+                logger.info(f"Loading module {module_name}")
+
+                sys.path.insert(0, plugins_dir)
+                m = importlib.import_module(module_name)
+                sys.path.pop(0)
+
                 assert isinstance(m, types.ModuleType)
+                logger.info(f"Load plugin file {m.__name__}")
                 yield m
 
         def plugin_classes():
@@ -55,8 +85,13 @@ class Plugin(object):
                 names = (x for x in m.__dict__)
                 items = (m.__getattribute__(x) for x in names)
                 classes = (x for x in items if type(x) == type)
-                plugins = (x for x in classes if issubclass(x, Plugin))
+                plugins = (
+                    x for x in classes
+                    if issubclass(x, Plugin) and x is not Plugin
+                )
+
                 for plugin_class in plugins:
+                    logger.info(f"Load plugin class {plugin_class.__name__}")
                     yield plugin_class
 
         # generate instances
@@ -65,5 +100,6 @@ class Plugin(object):
     @classmethod
     def run_all_found(cls, app, config):
         """Run all found plugins"""
+        logger.info("Run plugins")
         for plugin in cls.get_plugins(app, config):
-            plugin.run()
+            plugin()

@@ -1,12 +1,16 @@
 # -*- coding: utf-8 -*-
 from sphinx.application import Sphinx
+from sphinx.util import logging
 
 from sphinx_configurator import ConfigFile
 from sphinx_configurator import init_confluence
 from sphinx_configurator import init_latex
+from sphinx_configurator import Plugin
 from sphinx_configurator.builders.htmldir import init_html
 from sphinx_configurator.configurable import set_config_value
 from sphinx_configurator.utils import get_main_sphinx_section_name
+
+logger = logging.getLogger(__name__)
 
 builders_order = {
     'confluence': init_confluence,
@@ -20,6 +24,10 @@ def init_main_params(app, config):
     assert isinstance(app, Sphinx)
     assert isinstance(config, ConfigFile)
 
+    logger.info("Init plugins")
+    Plugin.run_all_found(app, config)
+
+    logger.info("Prepare configurations")
     sphinx_config = config.get_section(get_main_sphinx_section_name())
     builders = sphinx_config.builder
 

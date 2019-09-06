@@ -14,13 +14,13 @@ def rewritable_file_path(app, filename, default_path=NOTSET):
         return found_path
 
     if default_path is NOTSET:
-        default_path = path.dirname(__file__)
+        default_path = DEFAULT_PATH
     return path.join(default_path, filename)
 
 
 def rewritable_file_content(app, filename):
     """Get rewritable file content"""
-    file_path = rewritable_file_path(app, filename, path.dirname(__file__))
+    file_path = rewritable_file_path(app, filename, DEFAULT_PATH)
     with open(file_path, 'rb') as content_fh:
         content = content_fh.read().decode()
         return content

@@ -27,4 +27,4 @@ def setup(app):
     ))
 
     init_main_params(app, config_file)
-    Plugin.run_all_found(app, config_file)
+

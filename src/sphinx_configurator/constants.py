@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+PACKAGE_NAME = __package__
+
 CONFIGURATION_EXTENDED = 'documentation_builders'
 
 CONFIGURATION_SECTION_PREFIX = 'build'
@@ -23,6 +25,9 @@ IGNORE_CHANGES = False
 BUILDER_HTML_SECTION = 'html'
 
 SECTION_PLUGINS_NAME = 'plugins'
-
 OPTION_PLUGIN_DIR = 'plugin'
 OPTION_PLUGIN_DIR_DEFAULT = '_plugins'
+
+SECTION_TEMPLATES_NAME = 'templates'
+OPTION_TEMPLATES_DIR = 'templates'
+OPTION_TEMPLATES_DIR_DEFAULT = '_templates'

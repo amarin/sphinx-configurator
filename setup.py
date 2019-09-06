@@ -50,4 +50,7 @@ setup(
 
         ],
     },
+    setup_requires = [
+        "Jinja2"
+    ]
 )
