@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+
+__version__ = '0.1.0'
+
 from datetime import datetime
 
 from sphinx_configurator.builders.confluence import init_confluence
