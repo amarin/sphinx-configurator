@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 """Configure HTML builder's options"""
 
 from sphinx.application import Sphinx
