@@ -43,9 +43,11 @@ setup(
     entry_points={
         'console_scripts': [
             'make_sphinx-docs = sphinx_configurator.sphinx_wrapper:main',
+            'configure_docs = sphinx_configurator.cmdline.init:init_docs'
         ],
         'distutils.commands': [
             'make_sphinx_docs = sphinx_configurator.setup_command:Build',
+
         ],
     },
 )
