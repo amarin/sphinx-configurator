@@ -15,7 +15,7 @@ setup(
     author_email="asmadews@gmail.com",
     include_package_data=True,
     platforms="POSIX",
-    version="0.1.0",
+    version="0.2.0",
     packages=find_packages('src'),
     package_dir={'': 'src'},
     py_modules=[
