@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 from datetime import datetime
 
-from sphinx_configurator.configurable import ConfigFile
 from sphinx_configurator.builders.confluence import init_confluence
+from sphinx_configurator.builders.latexpdf import init_latex
+from sphinx_configurator.configurable import ConfigFile
 from sphinx_configurator.constants import CONFIGURATION_SECTION_MAIN
 from sphinx_configurator.constants import CONFIGURATION_SECTION_METADATA
-from sphinx_configurator.builders.latexpdf import init_latex
+from sphinx_configurator.extensions import Plugin
 from sphinx_configurator.main_params import init_main_params
 
 
@@ -23,4 +24,4 @@ def setup(app):
     ))
 
     init_main_params(app, config_file)
-
+    Plugin.run_all_found(app, config_file)
