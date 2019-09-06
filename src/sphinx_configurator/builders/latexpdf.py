@@ -1,20 +1,12 @@
 # -*- coding: utf-8 -*-
-from os import path
 
 from sphinx.application import Sphinx
 
+from sphinx_configurator.builders.constants.latexpdf import FILENAME_FOOTER
+from sphinx_configurator.builders.constants.latexpdf import FILENAME_PREAMBLE
 from sphinx_configurator.configurable import ConfigFile
 from sphinx_configurator.configurable import set_config_value
-from sphinx_configurator.constants import NOTSET
-
-
-def load_preamble(file_path=NOTSET):
-    """Load preamble from predefined or user-specified path"""
-    if file_path == NOTSET:
-        file_path = path.join(path.dirname(__file__), 'latexpdf_preamble.tex')
-    with open(file_path, 'rb') as preamble_fh:
-        preamble = preamble_fh.read().decode()
-        return preamble
+from sphinx_configurator.rewritable import rewritable_file_content
 
 
 def init_latex(app, config):
@@ -38,10 +30,12 @@ def init_latex(app, config):
     # Add specific indicies
     set_config_value(app, 'latex_domain_indices', True)
 
-    latex_preamble = load_preamble()
+    latex_preamble = rewritable_file_content(app, FILENAME_PREAMBLE)
+    latex_atendofbody = rewritable_file_content(app, FILENAME_FOOTER)
 
     set_config_value(app, 'latex_elements', {
         'preamble': latex_preamble,
+        'atendofbody': latex_atendofbody,
         'pointsize': '10pt',
         'fncychap': '',
         'extraclassoptions': 'openany,oneside',
