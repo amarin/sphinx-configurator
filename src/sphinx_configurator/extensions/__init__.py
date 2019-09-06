@@ -10,9 +10,11 @@ from sphinx.application import Sphinx
 from sphinx.util import logging
 
 from sphinx_configurator import ConfigFile
+from sphinx_configurator.constants import NOTSET
 from sphinx_configurator.constants import OPTION_PLUGIN_DIR
 from sphinx_configurator.constants import OPTION_PLUGIN_DIR_DEFAULT
 from sphinx_configurator.constants import SECTION_PLUGINS_NAME
+from sphinx_configurator.templates import Template
 
 logger = logging.getLogger(__name__)
 
@@ -103,3 +105,9 @@ class Plugin(object):
         logger.info("Run plugins")
         for plugin in cls.get_plugins(app, config):
             plugin()
+
+    def template(self, template_name):
+        """Load template by filename"""
+        if Template.template_engine is NOTSET:
+            Template.configure(self.app, self.config)
+        return Template(template_name)
