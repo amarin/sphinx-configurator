@@ -124,6 +124,9 @@ class ConfigFile(object):
         """Get section using dict-style access"""
         return self.__getattr__(item)
 
-    def get_section(self, section_name):
+    def get_section(self, section_name, init_if_missed=True):
         """Get section using method-style access"""
+        if not self.has_section(section_name) and init_if_missed:
+            self._config.add_section(section_name)
         return self[section_name]
+
