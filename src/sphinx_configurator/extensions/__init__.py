@@ -106,8 +106,8 @@ class Plugin(object):
         for plugin in cls.get_plugins(app, config):
             plugin()
 
-    def template(self, template_name):
+    def template(self, template_name, allow_default=False):
         """Load template by filename"""
         if Template.template_engine is NOTSET:
             Template.configure(self.app, self.config)
-        return Template(template_name)
+        return Template(template_name, allow_default=allow_default)
