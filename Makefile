@@ -1,6 +1,6 @@
 PROJECT_KEY		= sphinx_configurator
 SOURCEDIR     	= ./src/${PROJECT_KEY}
-MSG_CATALOG		= ./src/locale/
+MSG_CATALOG		= ./src/${PROJECT_KEY}/locale/
 MSG_TEMPLATE	= ${MSG_CATALOG}${PROJECT_KEY}.pot
 
 
