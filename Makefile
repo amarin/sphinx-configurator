@@ -51,3 +51,17 @@ publish: publish_test
 	@echo "Uploading to pypi.org"
 	@twine upload dist/*
 
+patch:
+	@echo
+	@echo "Bumping version m.v.Patch number"
+	bumpversion patch
+
+minor:
+	@echo
+	@echo "Bumping version m.Version.p number"
+	bumpversion minor
+
+major:
+	@echo
+	@echo "Bumping version Major.v.p number"
+	bumpversion major
