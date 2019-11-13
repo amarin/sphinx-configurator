@@ -1,9 +1,5 @@
 Sphinx Paw
 ========================================================================================================================
 
-.. toctree::
-   :glob:
-   :numbered:
-   :maxdepth: 3
+Make project Sphinx documentation easy without long configuration steps.
 
-   README
