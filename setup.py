@@ -10,10 +10,9 @@ from setuptools import setup
 
 setup(
     name="sphinx_configurator",
-    license="Media-Tel proprietary",
+    license="MIT",
     author="Aleksey Marin",
     author_email="asmadews@gmail.com",
-    include_package_data=True,
     platforms="POSIX",
     version="0.3.1",
     packages=find_packages('src'),
@@ -22,6 +21,8 @@ setup(
         splitext(os.path.basename(path))[0] for path in glob('src/*.py')
     ],
     zip_safe=False,
+    package_data={'sphinx_configurator': ['locale/*/LC_MESSAGES/*.mo']},
+    include_package_data=True,
     long_description="Sphinx Extension configurator",
     description="Sphinx Extension configurator",
     classifiers=[
@@ -29,16 +30,18 @@ setup(
         'Intended Audience :: Developers',
         'Topic :: Software Development :: Build Tools',
         'License :: OSI Approved :: MIT License',
-        'Environment :: Sphinx',
-        'License :: Other/Proprietary License',
+        'Environment :: Console',
+        'Environment :: Plugins',
+        'Framework :: Sphinx :: Extension',
+        'License :: OSI Approved :: MIT License',
         'Natural Language :: English',
-        'Operating System :: POSIX :: Linux',
-        'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 3.4',
-        'Programming Language :: Python :: 3.5',
+        'Operating System :: OS Independent',
+        'Programming Language :: Python :: 3 :: Only',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
+        'Topic :: Documentation :: Sphinx',
+        'Topic :: Software Development :: Documentation'
     ],
     entry_points={
         'console_scripts': [
@@ -50,7 +53,8 @@ setup(
 
         ],
     },
-    setup_requires = [
+    setup_requires=[
         "Jinja2"
     ]
+
 )
