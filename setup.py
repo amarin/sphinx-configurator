@@ -25,6 +25,7 @@ setup(
     author_email="asmadews@gmail.com",
     platforms="POSIX",
     version="0.4.0",
+    url="https://github.com/amarin/sphinx-paw",
     packages=find_packages('src'),
     package_dir={'': 'src'},
     py_modules=[
