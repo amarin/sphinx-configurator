@@ -12,3 +12,5 @@ easy_release.cfg
 /.eggs/
 /src/*.egg-info/
 /src/sphinx-vcs-changelog/
+/venv/
+/dist/
