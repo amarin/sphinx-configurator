@@ -1,19 +1,19 @@
 # -*- coding: utf-8 -*-
 from os import path
 
-from sphinx_configurator.constants import PACKAGE_NAME
+from sphinx_paw.constants import PACKAGE_NAME
 
 __version__ = '0.3.2'
 
 from datetime import datetime
 
-from sphinx_configurator.builders.confluence import init_confluence
-from sphinx_configurator.builders.latexpdf import init_latex
-from sphinx_configurator.configurable import ConfigFile
-from sphinx_configurator.constants import CONFIGURATION_SECTION_MAIN
-from sphinx_configurator.constants import CONFIGURATION_SECTION_METADATA
-from sphinx_configurator.extensions import Plugin
-from sphinx_configurator.main_params import init_main_params
+from sphinx_paw.builders.confluence import init_confluence
+from sphinx_paw.builders.latexpdf import init_latex
+from sphinx_paw.configurable import ConfigFile
+from sphinx_paw.constants import CONFIGURATION_SECTION_MAIN
+from sphinx_paw.constants import CONFIGURATION_SECTION_METADATA
+from sphinx_paw.extensions import Plugin
+from sphinx_paw.main_params import init_main_params
 
 
 from sphinx.util import logging

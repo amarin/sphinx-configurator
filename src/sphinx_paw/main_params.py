@@ -1,18 +1,17 @@
 # -*- coding: utf-8 -*-
-import locale
+"""Init Sphinx params"""
 
-import sphinx
 from sphinx.application import Sphinx
 from sphinx.util import logging
-from sphinx_configurator.constants import PACKAGE_NAME
+from sphinx_paw.constants import PACKAGE_NAME
 
-from sphinx_configurator import ConfigFile
-from sphinx_configurator import init_confluence
-from sphinx_configurator import init_latex
-from sphinx_configurator import Plugin
-from sphinx_configurator.builders.htmldir import init_html
-from sphinx_configurator.configurable import set_config_value
-from sphinx_configurator.utils import get_main_sphinx_section_name
+from sphinx_paw import ConfigFile
+from sphinx_paw import init_confluence
+from sphinx_paw import init_latex
+from sphinx_paw import Plugin
+from sphinx_paw.builders.htmldir import init_html
+from sphinx_paw.configurable import set_config_value
+from sphinx_paw.utils import get_main_sphinx_section_name
 
 logger = logging.getLogger(__name__)
 

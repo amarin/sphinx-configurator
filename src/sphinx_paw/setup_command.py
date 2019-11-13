@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
+"""Provide setup.py integration"""
 from sphinx.setup_command import BuildDoc
 
-from sphinx_configurator.sphinx_wrapper import get_source_dir
+from sphinx_paw.sphinx_wrapper import get_source_dir
 
 
 class Build(BuildDoc):

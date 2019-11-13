@@ -3,13 +3,23 @@
 """Setup configuration"""
 import os
 from glob import glob
-from os.path import splitext
+from os import path
 
+import io
 from setuptools import find_packages
 from setuptools import setup
 
+
+def read(*names, **kwargs):
+    """Read file specified by names path items"""
+    return io.open(
+        path.join(os.path.dirname(__file__), *names),
+        encoding=kwargs.get('encoding', 'utf8')
+    ).read()
+
+
 setup(
-    name="sphinx_configurator",
+    name="sphinx_paw",
     license="MIT",
     author="Aleksey Marin",
     author_email="asmadews@gmail.com",
@@ -18,15 +28,16 @@ setup(
     packages=find_packages('src'),
     package_dir={'': 'src'},
     py_modules=[
-        splitext(os.path.basename(path))[0] for path in glob('src/*.py')
+        path.splitext(os.path.basename(path))[0] for path in glob('src/*.py')
     ],
     zip_safe=False,
-    package_data={'sphinx_configurator': ['locale/*/LC_MESSAGES/*.mo']},
+    package_data={'sphinx_paw': ['locale/*/LC_MESSAGES/*.mo']},
     include_package_data=True,
-    long_description="Sphinx Extension configurator",
-    description="Sphinx Extension configurator",
+    long_description=read('docs/README.rst'),
+    long_description_content_type='text/x-rst',
+    description="Reduce Sphinx configuration steps",
     classifiers=[
-        'Development Status :: 5 - Production/Stable',
+        'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
         'Topic :: Software Development :: Build Tools',
         'License :: OSI Approved :: MIT License',
@@ -45,11 +56,11 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'make_sphinx-docs = sphinx_configurator.sphinx_wrapper:main',
-            'configure_docs = sphinx_configurator.cmdline.init:init_docs'
+            'make_sphinx_docs = sphinx_paw.sphinx_wrapper:main',
+            'configure_docs = sphinx_paw.cmdline.init:init_docs'
         ],
         'distutils.commands': [
-            'make_sphinx_docs = sphinx_configurator.setup_command:Build',
+            'make_sphinx_docs = sphinx_paw.setup_command:Build',
 
         ],
     },

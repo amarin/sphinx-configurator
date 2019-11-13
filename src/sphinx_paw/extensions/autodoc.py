@@ -4,10 +4,10 @@
 
 from sphinx.application import Sphinx
 
-from sphinx_configurator.configurable import ConfigFile
-from sphinx_configurator.configurable import set_config_value
-from sphinx_configurator.constants import BUILDER_HTML_SECTION
-from sphinx_configurator.utils import get_private_section_name
+from sphinx_paw.configurable import ConfigFile
+from sphinx_paw.configurable import set_config_value
+from sphinx_paw.constants import BUILDER_HTML_SECTION
+from sphinx_paw.utils import get_private_section_name
 
 
 def init_autodoc(app, config):

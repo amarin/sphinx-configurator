@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+"""Init package as Sphinx plugin"""
 import glob
 import importlib
 import sys
@@ -9,12 +10,12 @@ from os import path
 from sphinx.application import Sphinx
 from sphinx.util import logging
 
-from sphinx_configurator import ConfigFile
-from sphinx_configurator.constants import NOTSET
-from sphinx_configurator.constants import OPTION_PLUGIN_DIR
-from sphinx_configurator.constants import OPTION_PLUGIN_DIR_DEFAULT
-from sphinx_configurator.constants import SECTION_PLUGINS_NAME
-from sphinx_configurator.templates import Template
+from sphinx_paw import ConfigFile
+from sphinx_paw.constants import NOTSET
+from sphinx_paw.constants import OPTION_PLUGIN_DIR
+from sphinx_paw.constants import OPTION_PLUGIN_DIR_DEFAULT
+from sphinx_paw.constants import SECTION_PLUGINS_NAME
+from sphinx_paw.templates import Template
 
 logger = logging.getLogger(__name__)
 
@@ -27,8 +28,6 @@ class Plugin(object):
         assert isinstance(config, ConfigFile)
         self.app = app
         self.config = config
-
-        # _logger = logging.getLogger(self.__class__.__name__)
 
         self.debug = logger.debug
         self.info = logger.info
@@ -57,6 +56,7 @@ class Plugin(object):
 
     @classmethod
     def get_plugins(cls, app, config):
+        """Get available plugins"""
         logger.info("Loading plugins")
         plugins_dir = path.join(app.srcdir, Plugin.get_plugins_dir(app, config))
 
@@ -67,9 +67,9 @@ class Plugin(object):
         plugins_pattern = path.join(plugins_dir, '*.py')
 
         def plugin_modules():
+            """Load plugin modules"""
             logger.info("Loading plugin modules")
             for module_path in glob.glob(plugins_pattern):
-
                 module_name = path.basename(module_path)[:-3]
                 logger.info(f"Loading module {module_name}")
 

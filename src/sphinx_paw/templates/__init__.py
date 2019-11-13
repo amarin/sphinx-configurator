@@ -5,19 +5,19 @@ from jinja2 import Environment
 from sphinx.application import Sphinx
 from jinja2 import Template as JinjaTemplate
 
-from sphinx_configurator import ConfigFile
-from sphinx_configurator.constants import NOTSET
-from sphinx_configurator.constants import OPTION_TEMPLATES_DIR
-from sphinx_configurator.constants import OPTION_TEMPLATES_DIR_DEFAULT
-from sphinx_configurator.constants import SECTION_TEMPLATES_NAME
-from sphinx_configurator.rewritable import rewritable_file_path
-from sphinx_configurator.translation import translator
+from sphinx_paw import ConfigFile
+from sphinx_paw.constants import NOTSET
+from sphinx_paw.constants import OPTION_TEMPLATES_DIR
+from sphinx_paw.constants import OPTION_TEMPLATES_DIR_DEFAULT
+from sphinx_paw.constants import SECTION_TEMPLATES_NAME
+from sphinx_paw.rewritable import rewritable_file_path
+from sphinx_paw.translation import translator
 
 TEMPLATES_DEFAULT_PATH = path.realpath(path.dirname(__file__))
 
 
 class TemplateEngine(object):
-    """Шаблон страницы для заполнения"""
+    """Jinja page template engine"""
 
     def __init__(self, app, config):
         assert isinstance(app, Sphinx)
@@ -57,6 +57,7 @@ class TemplateEngine(object):
 
 
 class Template(object):
+    """Jinja page template"""
     template_engine = NOTSET
 
     @classmethod

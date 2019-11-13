@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
-from sphinx_configurator.configurable import ConfigFile
-from sphinx_configurator.constants import CONFIGURATION_EXTENDED
-from sphinx_configurator.constants import CONFIGURATION_SECTION_MAIN
-from sphinx_configurator.constants import DEFAULT_SECTION_PREFIX
-from sphinx_configurator.constants import DEFAULT_SECTION_SUFFIX
-from sphinx_configurator.constants import NOTSET
-from sphinx_configurator.constants import OPTION_BUILDER_PREFIX
-from sphinx_configurator.constants import OPTION_BUILDER_SUFFIX
+"""Internal utility functions"""
+from sphinx_paw.configurable import ConfigFile
+from sphinx_paw.constants import CONFIGURATION_EXTENDED
+from sphinx_paw.constants import CONFIGURATION_SECTION_MAIN
+from sphinx_paw.constants import DEFAULT_SECTION_PREFIX
+from sphinx_paw.constants import DEFAULT_SECTION_SUFFIX
+from sphinx_paw.constants import NOTSET
+from sphinx_paw.constants import OPTION_BUILDER_PREFIX
+from sphinx_paw.constants import OPTION_BUILDER_SUFFIX
 
 
 def get_main_sphinx_section_name():

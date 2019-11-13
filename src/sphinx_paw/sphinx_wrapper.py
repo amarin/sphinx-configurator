@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 import codecs
-from os import path, remove, rename
+from os import path, rename
 
 conf_py_template="""# -*- coding: utf-8 -*-
 \"\"\"Temporary Sphinx config made by sphinx_run\"\"\"
 
-extensions = ['sphinx_configurator']"""
+extensions = ['sphinx_paw']"""
 
 
 def get_source_dir():

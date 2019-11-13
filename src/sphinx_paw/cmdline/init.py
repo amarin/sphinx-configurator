@@ -11,6 +11,7 @@ def exit_with_error(error_text):
     stderr.write(error_text+'\n')
     exit(1)
 
+
 def get_project_settings():
     """Get project settings"""
     setup_file = path.join(path.curdir, 'setup.py')

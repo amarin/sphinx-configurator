@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+"""Define internal constants to runtime and setup"""
 
 PACKAGE_NAME = __package__
 

@@ -17,34 +17,34 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.7.0\n"
 
-#: src/sphinx_configurator/main_params.py:65
+#: src/sphinx_paw/main_params.py:65
 #, python-format
 msgid "Fig. %s"
 msgstr ""
 
-#: src/sphinx_configurator/main_params.py:66
+#: src/sphinx_paw/main_params.py:66
 #, python-format
 msgid "Table %s"
 msgstr ""
 
-#: src/sphinx_configurator/main_params.py:67
+#: src/sphinx_paw/main_params.py:67
 #, python-format
 msgid "Listing %s"
 msgstr ""
 
-#: src/sphinx_configurator/main_params.py:68
+#: src/sphinx_paw/main_params.py:68
 msgid "Section"
 msgstr ""
 
-#: src/sphinx_configurator/builders/latexpdf.py:43
+#: src/sphinx_paw/builders/latexpdf.py:43
 msgid "List of images"
 msgstr ""
 
-#: src/sphinx_configurator/builders/latexpdf.py:44
+#: src/sphinx_paw/builders/latexpdf.py:44
 msgid "List of tables"
 msgstr ""
 
-#: src/sphinx_configurator/builders/latexpdf.py:45
+#: src/sphinx_paw/builders/latexpdf.py:45
 msgid "List of listings"
 msgstr ""
 

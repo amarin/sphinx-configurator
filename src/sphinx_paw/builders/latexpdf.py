@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 import jinja2
 from sphinx.application import Sphinx
-from sphinx_configurator.constants import PACKAGE_NAME
+from sphinx_paw.constants import PACKAGE_NAME
 
-from sphinx_configurator.builders.constants.latexpdf import FILENAME_FOOTER
-from sphinx_configurator.builders.constants.latexpdf import FILENAME_PREAMBLE
-from sphinx_configurator.configurable import ConfigFile
-from sphinx_configurator.configurable import set_config_value
-from sphinx_configurator.rewritable import rewritable_file_content
+from sphinx_paw.builders.constants.latexpdf import FILENAME_FOOTER
+from sphinx_paw.builders.constants.latexpdf import FILENAME_PREAMBLE
+from sphinx_paw.configurable import ConfigFile
+from sphinx_paw.configurable import set_config_value
+from sphinx_paw.rewritable import rewritable_file_content
 
 
 def jinja_for_latex():

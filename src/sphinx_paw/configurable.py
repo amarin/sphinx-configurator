@@ -6,11 +6,11 @@ from os import path
 from six.moves.configparser import ConfigParser
 from sphinx.application import Sphinx
 
-from sphinx_configurator.constants import IGNORE_CHANGES
-from sphinx_configurator.constants import NOTSET
-from sphinx_configurator.constants import REBUILD_ON_CHANGE
-from sphinx_configurator.exceptions import RequireConfigOption
-from sphinx_configurator.exceptions import RequireConfigSection
+from sphinx_paw.constants import IGNORE_CHANGES
+from sphinx_paw.constants import NOTSET
+from sphinx_paw.constants import REBUILD_ON_CHANGE
+from sphinx_paw.exceptions import RequireConfigOption
+from sphinx_paw.exceptions import RequireConfigSection
 
 conf = ConfigParser()
 
@@ -44,10 +44,12 @@ class ConfigFileSection(object):
         return self._config_file.get(self._name, key, default)
 
     def __getattr__(self, item):
+        """Get configuration value as attribute"""
         return self.get(item, default=NOTSET)
 
     @property
     def app(self):
+        """Return Sphinx instance as application"""
         return self._config_file.sphinx
 
     def configure(self, name, default, option=None, rebuild=REBUILD_ON_CHANGE):
@@ -129,4 +131,3 @@ class ConfigFile(object):
         if not self.has_section(section_name) and init_if_missed:
             self._config.add_section(section_name)
         return self[section_name]
-

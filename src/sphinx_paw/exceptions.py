@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+"""Internal exception classes"""
 
 
 class ExtensionException(Exception):

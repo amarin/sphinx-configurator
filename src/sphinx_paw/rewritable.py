@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
+"""Allow default templates and configuration files redefinition locally"""
 from os import path
 
-from sphinx_configurator.constants import NOTSET
+from sphinx_paw.constants import NOTSET
 
 DEFAULT_PATH = path.join(path.dirname(__file__), 'defaults')
 
 
 def rewritable_file_path(app, filename, local_path=NOTSET, default_path=NOTSET):
-    """Get filepath in documentation src or default in sphinx_configurator"""
+    """Get filepath in documentation src or default in sphinx_paw"""
     src_dir = app.srcdir
     if local_path:
         found_path = path.join(src_dir, local_path, filename)
