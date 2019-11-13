@@ -14,7 +14,7 @@ setup(
     author="Aleksey Marin",
     author_email="asmadews@gmail.com",
     platforms="POSIX",
-    version="0.3.1",
+    version="0.3.2",
     packages=find_packages('src'),
     package_dir={'': 'src'},
     py_modules=[
