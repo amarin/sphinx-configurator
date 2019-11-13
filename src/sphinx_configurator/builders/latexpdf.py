@@ -1,12 +1,30 @@
 # -*- coding: utf-8 -*-
-
+import jinja2
 from sphinx.application import Sphinx
+from sphinx_configurator.constants import PACKAGE_NAME
 
 from sphinx_configurator.builders.constants.latexpdf import FILENAME_FOOTER
 from sphinx_configurator.builders.constants.latexpdf import FILENAME_PREAMBLE
 from sphinx_configurator.configurable import ConfigFile
 from sphinx_configurator.configurable import set_config_value
 from sphinx_configurator.rewritable import rewritable_file_content
+
+
+def jinja_for_latex():
+    """Make jinja2 env for templating latex"""
+    # http://eosrei.net/articles/2015/11/
+    # latex-templates-python-and-jinja2-generate-pdfs
+    return jinja2.Environment(
+        block_start_string=r'\BLOCK{',
+        block_end_string='}',
+        variable_start_string=r'\VAR{',
+        variable_end_string='}',
+        comment_start_string=r'\#{',
+        comment_end_string='}',
+        line_statement_prefix='%%',
+        line_comment_prefix='%#',
+        trim_blocks=True
+    )
 
 
 def init_latex(app, config):
@@ -31,11 +49,22 @@ def init_latex(app, config):
     set_config_value(app, 'latex_domain_indices', True)
 
     latex_preamble = rewritable_file_content(app, FILENAME_PREAMBLE)
-    latex_atendofbody = rewritable_file_content(app, FILENAME_FOOTER)
+    latex_attend_of_body = rewritable_file_content(app, FILENAME_FOOTER)
+
+    # Force use template for attendofbody
+    if True:
+        from sphinx.locale import get_translation
+        _ = get_translation(PACKAGE_NAME)
+        template = jinja_for_latex().from_string(latex_attend_of_body)
+        latex_attend_of_body = template.render(
+            list_of_images_title=_("List of images"),
+            list_of_tables_title=_("List of tables"),
+            list_of_listings_title=_("List of listings")
+        )
 
     set_config_value(app, 'latex_elements', {
         'preamble': latex_preamble,
-        'atendofbody': latex_atendofbody,
+        'atendofbody': latex_attend_of_body,
         'pointsize': '10pt',
         'fncychap': '',
         'extraclassoptions': 'openany,oneside',

@@ -1,11 +1,11 @@
-% Добавить СписокИзображений в TOC и документ
+% Add images list into TOC && document
 \listoffigures
-\addcontentsline{toc}{chapter}{Список изображений}
+\addcontentsline{toc}{chapter}{\VAR{list_of_images_title}}
 %
-% Добавить СписокТаблиц в TOC и документ
+% Add list of tables into TOC && document
 \listoftables
-\addcontentsline{toc}{chapter}{Список таблиц}
+\addcontentsline{toc}{chapter}{\VAR{list_of_tables_title}}
 %
-% Добавить раздел СписокПримеров в TOC и документ
-\listof{literalblock}{Список примеров}
-\addcontentsline{toc}{chapter}{Список примеров}
+% Add list of listings into TOC && document
+\listof{literalblock}{\VAR{list_of_listings_title}}
+\addcontentsline{toc}{chapter}{\VAR{list_of_listings_title}}

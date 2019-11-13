@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
+import locale
+
+import sphinx
 from sphinx.application import Sphinx
 from sphinx.util import logging
+from sphinx_configurator.constants import PACKAGE_NAME
 
 from sphinx_configurator import ConfigFile
 from sphinx_configurator import init_confluence
@@ -45,20 +49,31 @@ def init_main_params(app, config):
     set_config_value(app, 'master_doc', master_doc)
 
     # Main language
-    language = 'ru'
+    language = 'ru_RU'
     set_config_value(app, 'language', language)
+    app._init_i18n()
 
     # Exclude some file and folder patterns
     exclude_patterns = []
     set_config_value(app, 'exclude_patterns', exclude_patterns)
 
-    # Numerate figures
-    numfig = True
-    set_config_value(app, 'numfig', numfig)
+    # Auto-numerate figures, tables and code-blocks
+    set_config_value(app, 'numfig', True)
 
     # Figure numbers follow section numbering upto 2 level depth
-    numfig_secnum_depth = 2
+    numfig_secnum_depth = 0
     set_config_value(app, 'numfig_secnum_depth', numfig_secnum_depth)
+
+    from sphinx.locale import get_translation
+    _ = get_translation(PACKAGE_NAME)
+    logger.info(f"Attach translation {_.__name__}[{app.config.language}]")
+    numfig_format = {
+        "figure": _('Fig. %s'),
+        "table": _('Table %s'),
+        "code-block": _('Listing %s'),
+        "section": _("Section")
+    }
+    set_config_value(app, "numfig_format", numfig_format)
 
     # Code highlight style
     pygments_style = 'friendly'
