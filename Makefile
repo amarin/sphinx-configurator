@@ -54,14 +54,14 @@ publish: publish_test
 patch:
 	@echo
 	@echo "Bumping version m.v.Patch number"
-	bumpversion patch
+	bumpversion --verbose patch
 
 minor:
 	@echo
 	@echo "Bumping version m.Version.p number"
-	bumpversion minor
+	bumpversion --verbose minor
 
 major:
 	@echo
 	@echo "Bumping version Major.v.p number"
-	bumpversion major
+	bumpversion --verbose major
