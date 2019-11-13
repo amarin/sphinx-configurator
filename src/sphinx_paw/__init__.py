@@ -3,7 +3,7 @@ from os import path
 
 from sphinx_paw.constants import PACKAGE_NAME
 
-__version__ = '0.3.2'
+__version__ = '0.4.0'
 
 from datetime import datetime
 
