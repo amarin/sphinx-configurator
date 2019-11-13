@@ -36,7 +36,7 @@ locale-compile:
 	@echo "Compile localization strings *.mo files"
 	pybabel compile --directory=${MSG_CATALOG} --domain=${PROJECT_KEY}
 
-publish:
+publish_test:
 	@echo
 	@echo "Check twine installed"
 	@pip install twine
@@ -46,6 +46,8 @@ publish:
 	@twine check dist/*
 	@echo "Uploading to test.pypi.org"
 	@twine upload --repository-url https://test.pypi.org/legacy/ dist/*
+
+publish: publish_test
 	@echo "Uploading to pypi.org"
 	@twine upload dist/*
 
